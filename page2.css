@@ -85,7 +85,7 @@
   color:#c4302b;
 }
 
-.sponsor-box{
+.support-box{
   position:absolute;
   bottom:14px; right:14px;
   z-index:20;
@@ -98,16 +98,16 @@
   line-height:1.5;
     font-size:20px; 
 }
-.sponsor-box .sp-title{
+.support-box .sp-title{
   font-weight:bold; 
   letter-spacing:2px;
   color:#c4302b;
 }
-.sponsor-box .sp-name{
+.support-box .sp-name{
   font-weight:bold; 
   letter-spacing:1px;
 }
-.sponsor-box .sp-acc{
+.support-box .sp-acc{
   font-weight:bold; 
   color:#1f4e87; 
   letter-spacing:0.5px;
