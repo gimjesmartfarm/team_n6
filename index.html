@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>team N6 — 부추 온실</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="page1.css">
+  <link rel="stylesheet" href="page2.css">
+  <link rel="stylesheet" href="page3.css">
+</head>
+
+<body>
+
+  <button class="nav-arrow left" id="btnToPage1" aria-label="이전 페이지">&lt;</button>
+  <button class="nav-arrow right" id="btnToPage3" aria-label="다음 페이지">&gt;</button>
+
+  <!-- ============ PAGE 1: 입구 (reference 디자인 그대로 + 실훈/팀원 추가) ============ -->
+  <div class="page active" id="page1">
+    <div class="entrance-wrap">
+      <svg class="entrance-svg" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+        <!-- Sky -->
+        <rect x="0" y="0" width="320" height="160" fill="#cfe9ff" />
+        <rect x="0" y="0" width="320" height="20" fill="#bcdcfa" />
+        <g fill="#ffffff">
+          <rect x="40" y="18" width="18" height="6" />
+          <rect x="34" y="22" width="30" height="4" />
+          <rect x="220" y="10" width="22" height="5" />
+          <rect x="214" y="14" width="36" height="4" />
+          <rect x="260" y="30" width="14" height="4" />
+        </g>
+
+        <!-- Roof trusses -->
+        <g fill="#ffffff" stroke="#a8b2bc" stroke-width="1">
+          <rect x="0" y="6" width="320" height="3" />
+          <rect x="0" y="36" width="320" height="2" />
+          <rect x="0" y="66" width="320" height="2" />
+          <rect x="40" y="6" width="3" height="100" />
+          <rect x="90" y="6" width="3" height="100" />
+          <rect x="140" y="6" width="3" height="100" />
+          <rect x="180" y="6" width="3" height="100" />
+          <rect x="230" y="6" width="3" height="100" />
+          <rect x="280" y="6" width="3" height="100" />
+        </g>
+        <g stroke="#b8c2cc" stroke-width="1" fill="none">
+          <line x1="40" y1="36" x2="90" y2="6" />
+          <line x1="90" y1="36" x2="40" y2="6" />
+          <line x1="90" y1="36" x2="140" y2="6" />
+          <line x1="140" y1="36" x2="90" y2="6" />
+          <line x1="140" y1="36" x2="180" y2="6" />
+          <line x1="180" y1="36" x2="140" y2="6" />
+          <line x1="180" y1="36" x2="230" y2="6" />
+          <line x1="230" y1="36" x2="180" y2="6" />
+          <line x1="230" y1="36" x2="280" y2="6" />
+          <line x1="280" y1="36" x2="230" y2="6" />
+        </g>
+
+        <!-- Interior floor -->
+        <rect x="0" y="160" width="320" height="80" fill="#d9d3c1" />
+        <g stroke="#b7b09a" stroke-width="1">
+          <line x1="0" y1="180" x2="320" y2="180" />
+          <line x1="0" y1="200" x2="320" y2="200" />
+          <line x1="0" y1="220" x2="320" y2="220" />
+          <line x1="60" y1="160" x2="20" y2="240" />
+          <line x1="160" y1="160" x2="160" y2="240" />
+          <line x1="260" y1="160" x2="300" y2="240" />
+        </g>
+
+        <!-- DENSE CHIVE BEDS visible behind doors AND through side glass walls -->
+        <!-- Far row (background, smaller) -->
+        <g>
+          <rect x="0" y="150" width="320" height="10" fill="#ffffff" stroke="#8a96a4" />
+          <rect x="2" y="152" width="316" height="6" fill="#d4d4d2" />
+          <!-- dense tiny chives -->
+          <g fill="#1f6b2a">
+            <rect x="4" y="142" width="1" height="9" />
+            <rect x="7" y="140" width="1" height="11" />
+            <rect x="10" y="143" width="1" height="8" />
+            <rect x="13" y="141" width="1" height="10" />
+            <rect x="16" y="139" width="1" height="12" />
+            <rect x="19" y="142" width="1" height="9" />
+            <rect x="22" y="140" width="1" height="11" />
+            <rect x="25" y="143" width="1" height="8" />
+            <rect x="28" y="141" width="1" height="10" />
+            <rect x="31" y="139" width="1" height="12" />
+            <rect x="34" y="142" width="1" height="9" />
+            <rect x="37" y="140" width="1" height="11" />
+            <rect x="40" y="143" width="1" height="8" />
+            <rect x="43" y="141" width="1" height="10" />
+            <rect x="46" y="139" width="1" height="12" />
+            <rect x="49" y="142" width="1" height="9" />
+            <rect x="52" y="140" width="1" height="11" />
+            <rect x="55" y="143" width="1" height="8" />
+            <rect x="58" y="141" width="1" height="10" />
+            <rect x="61" y="139" width="1" height="12" />
+            <rect x="64" y="142" width="1" height="9" />
+            <rect x="67" y="140" width="1" height="11" />
+            <rect x="70" y="143" width="1" height="8" />
+            <rect x="73" y="141" width="1" height="10" />
+            <rect x="76" y="139" width="1" height="12" />
+            <rect x="79" y="142" width="1" height="9" />
+            <rect x="82" y="140" width="1" height="11" />
+            <rect x="85" y="143" width="1" height="8" />
+            <rect x="88" y="141" width="1" height="10" />
+            <rect x="91" y="139" width="1" height="12" />
+            <rect x="94" y="142" width="1" height="9" />
+            <rect x="97" y="140" width="1" height="11" />
+            <rect x="100" y="143" width="1" height="8" />
+            <rect x="103" y="141" width="1" height="10" />
+            <rect x="106" y="139" width="1" height="12" />
+            <rect x="109" y="142" width="1" height="9" />
+            <rect x="112" y="140" width="1" height="11" />
+            <rect x="115" y="143" width="1" height="8" />
+            <rect x="118" y="141" width="1" height="10" />
+            <rect x="121" y="139" width="1" height="12" />
+            <rect x="124" y="142" width="1" height="9" />
+            <rect x="127" y="140" width="1" height="11" />
+            <rect x="130" y="143" width="1" height="8" />
+            <rect x="133" y="141" width="1" height="10" />
+            <rect x="136" y="139" width="1" height="12" />
+            <rect x="139" y="142" width="1" height="9" />
+            <rect x="142" y="140" width="1" height="11" />
+            <rect x="145" y="143" width="1" height="8" />
+            <rect x="148" y="141" width="1" height="10" />
+            <rect x="151" y="139" width="1" height="12" />
+            <rect x="154" y="142" width="1" height="9" />
+            <rect x="157" y="140" width="1" height="11" />
+            <rect x="160" y="143" width="1" height="8" />
+            <rect x="163" y="141" width="1" height="10" />
+            <rect x="166" y="139" width="1" height="12" />
+            <rect x="169" y="142" width="1" height="9" />
+            <rect x="172" y="140" width="1" height="11" />
+            <rect x="175" y="143" width="1" height="8" />
+            <rect x="178" y="141" width="1" height="10" />
+            <rect x="181" y="139" width="1" height="12" />
+            <rect x="184" y="142" width="1" height="9" />
+            <rect x="187" y="140" width="1" height="11" />
+            <rect x="190" y="143" width="1" height="8" />
+            <rect x="193" y="141" width="1" height="10" />
+            <rect x="196" y="139" width="1" height="12" />
+            <rect x="199" y="142" width="1" height="9" />
+            <rect x="202" y="140" width="1" height="11" />
+            <rect x="205" y="143" width="1" height="8" />
+            <rect x="208" y="141" width="1" height="10" />
+            <rect x="211" y="139" width="1" height="12" />
+            <rect x="214" y="142" width="1" height="9" />
+            <rect x="217" y="140" width="1" height="11" />
+            <rect x="220" y="143" width="1" height="8" />
+            <rect x="223" y="141" width="1" height="10" />
+            <rect x="226" y="139" width="1" height="12" />
+            <rect x="229" y="142" width="1" height="9" />
+            <rect x="232" y="140" width="1" height="11" />
+            <rect x="235" y="143" width="1" height="8" />
+            <rect x="238" y="141" width="1" height="10" />
+            <rect x="241" y="139" width="1" height="12" />
+            <rect x="244" y="142" width="1" height="9" />
+            <rect x="247" y="140" width="1" height="11" />
+            <rect x="250" y="143" width="1" height="8" />
+            <rect x="253" y="141" width="1" height="10" />
+            <rect x="256" y="139" width="1" height="12" />
+            <rect x="259" y="142" width="1" height="9" />
+            <rect x="262" y="140" width="1" height="11" />
+            <rect x="265" y="143" width="1" height="8" />
+            <rect x="268" y="141" width="1" height="10" />
+            <rect x="271" y="139" width="1" height="12" />
+            <rect x="274" y="142" width="1" height="9" />
+            <rect x="277" y="140" width="1" height="11" />
+            <rect x="280" y="143" width="1" height="8" />
+            <rect x="283" y="141" width="1" height="10" />
+            <rect x="286" y="139" width="1" height="12" />
+            <rect x="289" y="142" width="1" height="9" />
+            <rect x="292" y="140" width="1" height="11" />
+            <rect x="295" y="143" width="1" height="8" />
+            <rect x="298" y="141" width="1" height="10" />
+            <rect x="301" y="139" width="1" height="12" />
+            <rect x="304" y="142" width="1" height="9" />
+            <rect x="307" y="140" width="1" height="11" />
+            <rect x="310" y="143" width="1" height="8" />
+            <rect x="313" y="141" width="1" height="10" />
+            <rect x="316" y="139" width="1" height="12" />
+          </g>
+        </g>
+
+        <!-- Near row (front, in front of doors lower area) -->
+        <g>
+          <!-- Bed frame -->
+          <rect x="0" y="180" width="320" height="20" fill="#ffffff" stroke="#8a96a4" />
+          <rect x="3" y="183" width="314" height="14" fill="#d4d4d2" />
+          <!-- Dense larger chives growing up from this bed -->
+          <g fill="#1f6b2a">
+            <rect x="5" y="160" width="2" height="22" />
+            <rect x="9" y="156" width="2" height="26" />
+            <rect x="13" y="162" width="2" height="20" />
+            <rect x="17" y="158" width="2" height="24" />
+            <rect x="21" y="154" width="2" height="28" />
+            <rect x="25" y="160" width="2" height="22" />
+            <rect x="29" y="156" width="2" height="26" />
+            <rect x="33" y="162" width="2" height="20" />
+            <rect x="37" y="158" width="2" height="24" />
+            <rect x="41" y="154" width="2" height="28" />
+            <rect x="45" y="160" width="2" height="22" />
+            <rect x="49" y="156" width="2" height="26" />
+            <rect x="53" y="162" width="2" height="20" />
+            <rect x="57" y="158" width="2" height="24" />
+            <rect x="61" y="154" width="2" height="28" />
+            <rect x="65" y="160" width="2" height="22" />
+            <rect x="69" y="156" width="2" height="26" />
+            <rect x="73" y="162" width="2" height="20" />
+            <rect x="77" y="158" width="2" height="24" />
+            <rect x="81" y="154" width="2" height="28" />
+            <rect x="85" y="160" width="2" height="22" />
+            <!-- gap for left door area (around 95-220) but still some behind -->
+            <rect x="225" y="160" width="2" height="22" />
+            <rect x="229" y="156" width="2" height="26" />
+            <rect x="233" y="162" width="2" height="20" />
+            <rect x="237" y="158" width="2" height="24" />
+            <rect x="241" y="154" width="2" height="28" />
+            <rect x="245" y="160" width="2" height="22" />
+            <rect x="249" y="156" width="2" height="26" />
+            <rect x="253" y="162" width="2" height="20" />
+            <rect x="257" y="158" width="2" height="24" />
+            <rect x="261" y="154" width="2" height="28" />
+            <rect x="265" y="160" width="2" height="22" />
+            <rect x="269" y="156" width="2" height="26" />
+            <rect x="273" y="162" width="2" height="20" />
+            <rect x="277" y="158" width="2" height="24" />
+            <rect x="281" y="154" width="2" height="28" />
+            <rect x="285" y="160" width="2" height="22" />
+            <rect x="289" y="156" width="2" height="26" />
+            <rect x="293" y="162" width="2" height="20" />
+            <rect x="297" y="158" width="2" height="24" />
+            <rect x="301" y="154" width="2" height="28" />
+            <rect x="305" y="160" width="2" height="22" />
+            <rect x="309" y="156" width="2" height="26" />
+            <rect x="313" y="162" width="2" height="20" />
+          </g>
+          <!-- mid-tone chives mixed in -->
+          <g fill="#3a9134">
+            <rect x="7" y="170" width="2" height="12" />
+            <rect x="11" y="172" width="2" height="10" />
+            <rect x="15" y="168" width="2" height="14" />
+            <rect x="19" y="172" width="2" height="10" />
+            <rect x="23" y="170" width="2" height="12" />
+            <rect x="27" y="172" width="2" height="10" />
+            <rect x="31" y="168" width="2" height="14" />
+            <rect x="35" y="170" width="2" height="12" />
+            <rect x="39" y="172" width="2" height="10" />
+            <rect x="43" y="168" width="2" height="14" />
+            <rect x="47" y="170" width="2" height="12" />
+            <rect x="51" y="172" width="2" height="10" />
+            <rect x="55" y="168" width="2" height="14" />
+            <rect x="59" y="170" width="2" height="12" />
+            <rect x="63" y="172" width="2" height="10" />
+            <rect x="67" y="168" width="2" height="14" />
+            <rect x="71" y="170" width="2" height="12" />
+            <rect x="75" y="172" width="2" height="10" />
+            <rect x="79" y="168" width="2" height="14" />
+            <rect x="83" y="170" width="2" height="12" />
+            <rect x="227" y="170" width="2" height="12" />
+            <rect x="231" y="172" width="2" height="10" />
+            <rect x="235" y="168" width="2" height="14" />
+            <rect x="239" y="170" width="2" height="12" />
+            <rect x="243" y="172" width="2" height="10" />
+            <rect x="247" y="168" width="2" height="14" />
+            <rect x="251" y="170" width="2" height="12" />
+            <rect x="255" y="172" width="2" height="10" />
+            <rect x="259" y="168" width="2" height="14" />
+            <rect x="263" y="170" width="2" height="12" />
+            <rect x="267" y="172" width="2" height="10" />
+            <rect x="271" y="168" width="2" height="14" />
+            <rect x="275" y="170" width="2" height="12" />
+            <rect x="279" y="172" width="2" height="10" />
+            <rect x="283" y="168" width="2" height="14" />
+            <rect x="287" y="170" width="2" height="12" />
+            <rect x="291" y="172" width="2" height="10" />
+            <rect x="295" y="168" width="2" height="14" />
+            <rect x="299" y="170" width="2" height="12" />
+            <rect x="303" y="172" width="2" height="10" />
+            <rect x="307" y="168" width="2" height="14" />
+            <rect x="311" y="170" width="2" height="12" />
+          </g>
+        </g>
+
+        <!-- Center walkway (between doors area, showing aisle) -->
+        <rect x="140" y="200" width="40" height="22" fill="#bfb59e" opacity="0.7" />
+
+        <!-- =================== GLASS SIDE WALLS =================== -->
+        <!-- These are translucent panels covering the side viewing areas -->
+        <g>
+          <!-- Left glass wall frame (vertical) -->
+          <rect x="32" y="56" width="60" height="170" fill="#d8ecff" opacity="0.32" stroke="#bcc6d0" stroke-width="2" />
+          <!-- horizontal divider on left glass -->
+          <line x1="32" y1="118" x2="92" y2="118" stroke="#bcc6d0" stroke-width="2" />
+          <!-- vertical mullion -->
+          <line x1="62" y1="56" x2="62" y2="226" stroke="#bcc6d0" stroke-width="2" />
+          <!-- glass tint stripes -->
+          <g fill="#ffffff" opacity="0.18">
+            <rect x="36" y="60" width="22" height="2" />
+            <rect x="40" y="66" width="14" height="2" />
+            <rect x="66" y="60" width="22" height="2" />
+            <rect x="70" y="66" width="14" height="2" />
+          </g>
+
+          <!-- Right glass wall frame -->
+          <rect x="228" y="56" width="60" height="170" fill="#d8ecff" opacity="0.32" stroke="#bcc6d0"
+            stroke-width="2" />
+          <line x1="228" y1="118" x2="288" y2="118" stroke="#bcc6d0" stroke-width="2" />
+          <line x1="258" y1="56" x2="258" y2="226" stroke="#bcc6d0" stroke-width="2" />
+          <g fill="#ffffff" opacity="0.18">
+            <rect x="232" y="60" width="22" height="2" />
+            <rect x="236" y="66" width="14" height="2" />
+            <rect x="262" y="60" width="22" height="2" />
+            <rect x="266" y="66" width="14" height="2" />
+          </g>
+        </g>
+
+        <!-- Top horizontal door frame (lintel above doors) -->
+        <rect x="92" y="56" width="136" height="6" fill="#ffffff" stroke="#bcc6d0" />
+
+        <!-- =================== LEFT SLIDING DOOR =================== -->
+        <g id="leftDoor">
+          <rect x="100" y="62" width="60" height="158" fill="#ffffff" stroke="#bcc6d0" stroke-width="2" />
+          <rect x="104" y="66" width="52" height="108" fill="#d8ecff" opacity="0.6" />
+          <rect x="100" y="118" width="60" height="3" fill="#bcc6d0" />
+          <rect x="104" y="174" width="52" height="42" fill="#f6f6f3" />
+          <g stroke="#d8d8d2" stroke-width="1">
+            <line x1="112" y1="174" x2="112" y2="216" />
+            <line x1="120" y1="174" x2="120" y2="216" />
+            <line x1="128" y1="174" x2="128" y2="216" />
+            <line x1="136" y1="174" x2="136" y2="216" />
+            <line x1="144" y1="174" x2="144" y2="216" />
+            <line x1="152" y1="174" x2="152" y2="216" />
+          </g>
+
+          <rect x="108" y="72" width="48" height="44" fill="#ffffff" stroke="#222" stroke-width="1.5" />
+          <rect x="108" y="72" width="48" height="8" fill="#ffffff" stroke="#222" stroke-width="1.5" />
+          <text x="132" y="79" font-family="'Press Start 2P', monospace" font-size="5" fill="#1d1d1d"
+            text-anchor="middle">team</text>
+          <text x="132" y="96" font-family="'Press Start 2P', monospace" font-size="12" fill="#1d1d1d"
+            text-anchor="middle" font-weight="bold">N6</text>
+          <line x1="110" y1="100" x2="154" y2="100" stroke="#888" stroke-width="0.5" />
+          <line x1="110" y1="106" x2="154" y2="106" stroke="#888" stroke-width="0.5" />
+          <line x1="110" y1="112" x2="154" y2="112" stroke="#888" stroke-width="0.5" />
+
+          <text x="132" y="130" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="5" fill="#1d1d1d"
+            text-anchor="middle">출입 시 전화 주세요</text>
+
+          <rect x="108" y="138" width="42" height="50" fill="#ffffff" stroke="#888" />
+          <text x="114" y="150" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="5" font-weight="700"
+            fill="#1d1d1d">품 목 : 부추</text>
+          <text x="114" y="162" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="5" font-weight="700"
+            fill="#1d1d1d">품 종 : 그린벨트</text>
+          <text x="114" y="174" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="5" font-weight="700"
+            fill="#1d1d1d">실 훈 : 즐겜</text>
+
+          <rect x="152" y="138" width="3" height="14" fill="#888" />
+          <rect x="151" y="140" width="5" height="3" fill="#666" />
+        </g>
+
+        <g id="rightDoor">
+          <rect x="160" y="62" width="60" height="158" fill="#ffffff" stroke="#bcc6d0" stroke-width="2" />
+          <rect x="164" y="66" width="52" height="108" fill="#d8ecff" opacity="0.6" />
+          <rect x="160" y="118" width="60" height="3" fill="#bcc6d0" />
+          <rect x="164" y="174" width="52" height="42" fill="#f6f6f3" />
+          <g stroke="#d8d8d2" stroke-width="1">
+            <line x1="172" y1="174" x2="172" y2="216" />
+            <line x1="180" y1="174" x2="180" y2="216" />
+            <line x1="188" y1="174" x2="188" y2="216" />
+            <line x1="196" y1="174" x2="196" y2="216" />
+            <line x1="204" y1="174" x2="204" y2="216" />
+            <line x1="212" y1="174" x2="212" y2="216" />
+          </g>
+
+          <rect x="172" y="72" width="38" height="44" fill="#ffffff" stroke="#222" stroke-width="1.5" />
+          <text x="191" y="94" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="8" fill="#c4302b"
+            font-weight="700" text-anchor="middle">방제중</text>
+          <text x="191" y="106" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="8" fill="#c4302b"
+            font-weight="700" text-anchor="middle">출입금지</text>
+
+          <rect x="172" y="138" width="38" height="50" fill="#ffffff" stroke="#888" />
+          <text x="191" y="148" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="5" font-weight="700"
+            fill="#1d1d1d" text-anchor="middle">팀 원</text>
+          <text x="191" y="157" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="4.5" fill="#1d1d1d"
+            text-anchor="middle">김태완</text>
+          <text x="191" y="165" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="4.5" fill="#1d1d1d"
+            text-anchor="middle">장승태</text>
+          <text x="191" y="173" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="4.5" fill="#1d1d1d"
+            text-anchor="middle">조민국</text>
+          <text x="191" y="183" class="ko" font-family="'Gowun Dodum', sans-serif" font-size="3.5" fill="#888"
+            text-anchor="middle">team N6</text>
+
+          <rect x="164" y="138" width="3" height="14" fill="#888" />
+          <rect x="163" y="140" width="5" height="3" fill="#666" />
+        </g>
+
+        <!-- Sliding door track at top -->
+        <rect x="92" y="58" width="136" height="2" fill="#aaaaaa" />
+        <rect x="92" y="60" width="136" height="1" fill="#888888" />
+
+        <!-- Ground in foreground -->
+        <rect x="0" y="218" width="320" height="22" fill="#bfb59e" />
+        <g stroke="#a39880" stroke-width="1">
+          <line x1="0" y1="226" x2="320" y2="226" />
+          <line x1="0" y1="234" x2="320" y2="234" />
+        </g>
+        <g fill="#7d7259">
+          <rect x="20" y="232" width="4" height="3" />
+          <rect x="56" y="230" width="3" height="3" />
+          <rect x="280" y="232" width="4" height="3" />
+          <rect x="302" y="230" width="3" height="3" />
+        </g>
+      </svg>
+    </div>
+
+    <button class="start-btn" id="startBtn">▶ Enter</button>
+  </div>
+
+  <!-- ============ PAGE 2: 농장 시뮬레이션 ============ -->
+  <div class="page" id="page2">
+    <div class="farm-panel">
+
+      <!-- 천창 (사선 트러스 SVG) -->
+      <div class="roof">
+        <svg viewBox="0 0 320 50" preserveAspectRatio="none" shape-rendering="crispEdges">
+          <g fill="#ffffff" stroke="#bcc6d0" stroke-width="1">
+            <rect x="0" y="0" width="320" height="3" />
+            <rect x="0" y="14" width="320" height="2" />
+            <rect x="0" y="28" width="320" height="2" />
+            <rect x="0" y="42" width="320" height="2" />
+          </g>
+          <g stroke="#bcc6d0" stroke-width="1" fill="none">
+            <line x1="0" y1="3" x2="40" y2="50" />
+            <line x1="40" y1="3" x2="80" y2="50" />
+            <line x1="80" y1="3" x2="120" y2="50" />
+            <line x1="120" y1="3" x2="160" y2="50" />
+            <line x1="160" y1="3" x2="200" y2="50" />
+            <line x1="200" y1="3" x2="240" y2="50" />
+            <line x1="240" y1="3" x2="280" y2="50" />
+            <line x1="280" y1="3" x2="320" y2="50" />
+          </g>
+          <g stroke="#cfd6df" stroke-width="1" fill="none">
+            <line x1="0" y1="14" x2="40" y2="3" />
+            <line x1="40" y1="14" x2="80" y2="3" />
+            <line x1="80" y1="14" x2="120" y2="3" />
+            <line x1="120" y1="14" x2="160" y2="3" />
+            <line x1="160" y1="14" x2="200" y2="3" />
+            <line x1="200" y1="14" x2="240" y2="3" />
+            <line x1="240" y1="14" x2="280" y2="3" />
+            <line x1="280" y1="14" x2="320" y2="3" />
+            <line x1="40" y1="3" x2="80" y2="14" />
+            <line x1="80" y1="3" x2="120" y2="14" />
+            <line x1="120" y1="3" x2="160" y2="14" />
+            <line x1="160" y1="3" x2="200" y2="14" />
+            <line x1="200" y1="3" x2="240" y2="14" />
+            <line x1="240" y1="3" x2="280" y2="14" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- 해 (8꼭지) -->
+      <div class="sun" id="sun">
+        <svg viewBox="0 0 32 32" shape-rendering="crispEdges">
+          <!-- 외곽 코로나 -->
+          <g fill="#ffe98a">
+            <rect x="5" y="13" width="22" height="6" />
+            <rect x="13" y="5" width="6" height="22" />
+            <rect x="8" y="8" width="16" height="16" />
+          </g>
+          <!-- 중간 노란층 -->
+          <g fill="#ffd23a">
+            <rect x="10" y="14" width="12" height="4" />
+            <rect x="14" y="10" width="4" height="12" />
+            <rect x="11" y="11" width="10" height="10" />
+          </g>
+          <!-- 내부 진한층 -->
+          <g fill="#ffaa18">
+            <rect x="14" y="14" width="4" height="4" />
+          </g>
+          <!-- 하이라이트 -->
+          <rect x="13" y="13" width="2" height="2" fill="#fff5b0" />
+          <!-- 8꼭지 광선: 4 cardinal + 4 diagonal -->
+          <g fill="#ffd23a">
+            <!-- 동서남북 (cardinal) -->
+            <rect x="15" y="0" width="2" height="5" />
+            <rect x="15" y="27" width="2" height="5" />
+            <rect x="0" y="15" width="5" height="2" />
+            <rect x="27" y="15" width="5" height="2" />
+            <!-- 대각선 (NE) -->
+            <rect x="22" y="7" width="2" height="2" />
+            <rect x="24" y="5" width="2" height="2" />
+            <rect x="26" y="3" width="2" height="2" />
+            <!-- 대각선 (NW) -->
+            <rect x="8" y="7" width="2" height="2" />
+            <rect x="6" y="5" width="2" height="2" />
+            <rect x="4" y="3" width="2" height="2" />
+            <!-- 대각선 (SE) -->
+            <rect x="22" y="23" width="2" height="2" />
+            <rect x="24" y="25" width="2" height="2" />
+            <rect x="26" y="27" width="2" height="2" />
+            <!-- 대각선 (SW) -->
+            <rect x="8" y="23" width="2" height="2" />
+            <rect x="6" y="25" width="2" height="2" />
+            <rect x="4" y="27" width="2" height="2" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- 우측 상단 QR -->
+      <div class="qr-side">
+        <div class="qr-label">질문하기</div>
+        <img id="qrSide" src="qr.png" alt="QR Code">
+        <!-- <div class="qr-sub">SCAN ME</div> -->
+      </div>
+
+      <!-- 상단 표시 -->
+      <div class="day-counter" id="dayCounter">DAY 01</div>
+      <div class="section-badge" id="sectionBadge">SECTION 1 / 3</div>
+
+      <!-- 베드 영역 (full-width grid; JS가 채움) -->
+      <div class="bed-area" id="bedArea"></div>
+
+      <!-- 작업 영역 -->
+      <div class="work-area">
+        <div class="crate c1">
+          <div class="pile"></div>
+        </div>
+        <div class="crate c2">
+          <div class="pile"></div>
+        </div>
+        <div class="crate c3">
+          <div class="pile"></div>
+        </div>
+        <div class="deposit"></div>
+      </div>
+
+      <!-- 후원 계좌 -->
+      <div class="sponsor-box">
+        <div class="sp-title">★ 후원 계좌 ★</div>
+        <div class="sp-name">team_N6</div>
+        <div class="sp-acc">토스뱅크<br>1002-5757-2839</div>
+      </div>
+
+      <!-- 농부 3명 -->
+      <!-- 농부 farmer1 -->
+      <div class="farmer" id="farmer1">
+        <svg class="farmer-sprite" viewBox="0 0 16 24" shape-rendering="crispEdges">
+          <g class="farmer-body">
+            <!-- 모자 -->
+            <rect x="2" y="0" width="12" height="3" fill="#caa14a" />
+            <rect x="3" y="3" width="10" height="1" fill="#9c7a2e" />
+            <rect x="4" y="1" width="8" height="1" fill="#e0bd6a" />
+            <!-- 얼굴 -->
+            <rect x="5" y="4" width="6" height="4" fill="#f4ccae" />
+            <!-- 눈 -->
+            <rect x="6" y="5" width="1" height="1" fill="#1d1d1d" />
+            <rect x="9" y="5" width="1" height="1" fill="#1d1d1d" />
+            <!-- 입 (기본) -->
+            <g class="mouth-neutral">
+              <rect x="6" y="7" width="4" height="1" fill="#a06860" />
+            </g>
+            <!-- 입 (웃음) -->
+            <g class="mouth-smile">
+              <rect x="5" y="7" width="1" height="1" fill="#a06860" />
+              <rect x="6" y="8" width="4" height="1" fill="#a06860" />
+              <rect x="10" y="7" width="1" height="1" fill="#a06860" />
+            </g>
+            <!-- 상체 / 작업복 -->
+            <rect x="4" y="9" width="8" height="6" fill="#3a6db5" />
+            <rect x="4" y="9" width="8" height="1" fill="#5e91d3" />
+            <rect x="5" y="10" width="2" height="1" fill="#ffd23a" />
+            <rect x="9" y="10" width="2" height="1" fill="#ffd23a" />
+            <rect x="7" y="11" width="2" height="3" fill="#5e91d3" />
+            <!-- 왼팔 -->
+            <rect x="2" y="10" width="2" height="5" fill="#f4ccae" />
+            <!-- 오른팔 + 낫 -->
+            <g class="arm-r">
+              <rect x="12" y="10" width="2" height="5" fill="#f4ccae" />
+              <rect x="13" y="9" width="1" height="9" fill="#7a4d1f" />
+              <rect x="13" y="9" width="1" height="2" fill="#a87432" />
+              <rect x="14" y="9" width="1" height="1" fill="#e8edf2" />
+              <rect x="15" y="10" width="1" height="2" fill="#cfd6df" />
+              <rect x="15" y="12" width="1" height="1" fill="#aab2bc" />
+              <rect x="14" y="13" width="1" height="1" fill="#aab2bc" />
+            </g>
+            <!-- 부추 묶음 (수확 후 들고있음) -->
+            <g class="bundle">
+              <rect x="0" y="13" width="5" height="4" fill="#1f6b2a" />
+              <rect x="0" y="13" width="5" height="1" fill="#3a9134" />
+              <rect x="1" y="17" width="3" height="1" fill="#7a4d1f" />
+              <rect x="1" y="8" width="1" height="5" fill="#1f6b2a" />
+              <rect x="2" y="7" width="1" height="6" fill="#2d8a3a" />
+              <rect x="3" y="9" width="1" height="4" fill="#1f6b2a" />
+              <rect x="4" y="7" width="1" height="6" fill="#2d8a3a" />
+              <rect x="0" y="10" width="1" height="3" fill="#1f6b2a" />
+            </g>
+            <!-- 다리 -->
+            <rect x="5" y="15" width="3" height="6" fill="#2a4a85" />
+            <rect x="8" y="15" width="3" height="6" fill="#2a4a85" />
+            <!-- 신발 -->
+            <rect x="4" y="21" width="4" height="2" fill="#3a2a18" />
+            <rect x="8" y="21" width="4" height="2" fill="#3a2a18" />
+          </g>
+        </svg>
+      </div>
+      <!-- 농부 farmer2 -->
+      <div class="farmer" id="farmer2">
+        <svg class="farmer-sprite" viewBox="0 0 16 24" shape-rendering="crispEdges">
+          <g class="farmer-body">
+            <!-- 모자 -->
+            <rect x="2" y="0" width="12" height="3" fill="#4a7a35" />
+            <rect x="3" y="3" width="10" height="1" fill="#2a5020" />
+            <rect x="4" y="1" width="8" height="1" fill="#6b9b3f" />
+            <!-- 얼굴 -->
+            <rect x="5" y="4" width="6" height="4" fill="#f4ccae" />
+            <!-- 눈 -->
+            <rect x="6" y="5" width="1" height="1" fill="#1d1d1d" />
+            <rect x="9" y="5" width="1" height="1" fill="#1d1d1d" />
+            <!-- 입 (기본) -->
+            <g class="mouth-neutral">
+              <rect x="6" y="7" width="4" height="1" fill="#a06860" />
+            </g>
+            <!-- 입 (웃음) -->
+            <g class="mouth-smile">
+              <rect x="5" y="7" width="1" height="1" fill="#a06860" />
+              <rect x="6" y="8" width="4" height="1" fill="#a06860" />
+              <rect x="10" y="7" width="1" height="1" fill="#a06860" />
+            </g>
+            <!-- 상체 / 작업복 -->
+            <rect x="4" y="9" width="8" height="6" fill="#c44b3e" />
+            <rect x="4" y="9" width="8" height="1" fill="#e07060" />
+            <rect x="5" y="10" width="2" height="1" fill="#ffd23a" />
+            <rect x="9" y="10" width="2" height="1" fill="#ffd23a" />
+            <rect x="7" y="11" width="2" height="3" fill="#e07060" />
+            <!-- 왼팔 -->
+            <rect x="2" y="10" width="2" height="5" fill="#f4ccae" />
+            <!-- 오른팔 + 낫 -->
+            <g class="arm-r">
+              <rect x="12" y="10" width="2" height="5" fill="#f4ccae" />
+              <rect x="13" y="9" width="1" height="9" fill="#7a4d1f" />
+              <rect x="13" y="9" width="1" height="2" fill="#a87432" />
+              <rect x="14" y="9" width="1" height="1" fill="#e8edf2" />
+              <rect x="15" y="10" width="1" height="2" fill="#cfd6df" />
+              <rect x="15" y="12" width="1" height="1" fill="#aab2bc" />
+              <rect x="14" y="13" width="1" height="1" fill="#aab2bc" />
+            </g>
+            <!-- 부추 묶음 (수확 후 들고있음) -->
+            <g class="bundle">
+              <rect x="0" y="13" width="5" height="4" fill="#1f6b2a" />
+              <rect x="0" y="13" width="5" height="1" fill="#3a9134" />
+              <rect x="1" y="17" width="3" height="1" fill="#7a4d1f" />
+              <rect x="1" y="8" width="1" height="5" fill="#1f6b2a" />
+              <rect x="2" y="7" width="1" height="6" fill="#2d8a3a" />
+              <rect x="3" y="9" width="1" height="4" fill="#1f6b2a" />
+              <rect x="4" y="7" width="1" height="6" fill="#2d8a3a" />
+              <rect x="0" y="10" width="1" height="3" fill="#1f6b2a" />
+            </g>
+            <!-- 다리 -->
+            <rect x="5" y="15" width="3" height="6" fill="#7a2820" />
+            <rect x="8" y="15" width="3" height="6" fill="#7a2820" />
+            <!-- 신발 -->
+            <rect x="4" y="21" width="4" height="2" fill="#3a2a18" />
+            <rect x="8" y="21" width="4" height="2" fill="#3a2a18" />
+          </g>
+        </svg>
+      </div>
+      <!-- 농부 farmer3 -->
+      <div class="farmer" id="farmer3">
+        <svg class="farmer-sprite" viewBox="0 0 16 24" shape-rendering="crispEdges">
+          <g class="farmer-body">
+            <!-- 모자 -->
+            <rect x="2" y="0" width="12" height="3" fill="#b8a4d6" />
+            <rect x="3" y="3" width="10" height="1" fill="#7a6498" />
+            <rect x="4" y="1" width="8" height="1" fill="#d4c0e8" />
+            <!-- 얼굴 -->
+            <rect x="5" y="4" width="6" height="4" fill="#f4ccae" />
+            <!-- 눈 -->
+            <rect x="6" y="5" width="1" height="1" fill="#1d1d1d" />
+            <rect x="9" y="5" width="1" height="1" fill="#1d1d1d" />
+            <!-- 입 (기본) -->
+            <g class="mouth-neutral">
+              <rect x="6" y="7" width="4" height="1" fill="#a06860" />
+            </g>
+            <!-- 입 (웃음) -->
+            <g class="mouth-smile">
+              <rect x="5" y="7" width="1" height="1" fill="#a06860" />
+              <rect x="6" y="8" width="4" height="1" fill="#a06860" />
+              <rect x="10" y="7" width="1" height="1" fill="#a06860" />
+            </g>
+            <!-- 상체 / 작업복 -->
+            <rect x="4" y="9" width="8" height="6" fill="#3a9134" />
+            <rect x="4" y="9" width="8" height="1" fill="#5db055" />
+            <rect x="5" y="10" width="2" height="1" fill="#ffd23a" />
+            <rect x="9" y="10" width="2" height="1" fill="#ffd23a" />
+            <rect x="7" y="11" width="2" height="3" fill="#5db055" />
+            <!-- 왼팔 -->
+            <rect x="2" y="10" width="2" height="5" fill="#f4ccae" />
+            <!-- 오른팔 + 낫 -->
+            <g class="arm-r">
+              <rect x="12" y="10" width="2" height="5" fill="#f4ccae" />
+              <rect x="13" y="9" width="1" height="9" fill="#7a4d1f" />
+              <rect x="13" y="9" width="1" height="2" fill="#a87432" />
+              <rect x="14" y="9" width="1" height="1" fill="#e8edf2" />
+              <rect x="15" y="10" width="1" height="2" fill="#cfd6df" />
+              <rect x="15" y="12" width="1" height="1" fill="#aab2bc" />
+              <rect x="14" y="13" width="1" height="1" fill="#aab2bc" />
+            </g>
+            <!-- 부추 묶음 (수확 후 들고있음) -->
+            <g class="bundle">
+              <rect x="0" y="13" width="5" height="4" fill="#1f6b2a" />
+              <rect x="0" y="13" width="5" height="1" fill="#3a9134" />
+              <rect x="1" y="17" width="3" height="1" fill="#7a4d1f" />
+              <rect x="1" y="8" width="1" height="5" fill="#1f6b2a" />
+              <rect x="2" y="7" width="1" height="6" fill="#2d8a3a" />
+              <rect x="3" y="9" width="1" height="4" fill="#1f6b2a" />
+              <rect x="4" y="7" width="1" height="6" fill="#2d8a3a" />
+              <rect x="0" y="10" width="1" height="3" fill="#1f6b2a" />
+            </g>
+            <!-- 다리 -->
+            <rect x="5" y="15" width="3" height="6" fill="#1f5520" />
+            <rect x="8" y="15" width="3" height="6" fill="#1f5520" />
+            <!-- 신발 -->
+            <rect x="4" y="21" width="4" height="2" fill="#3a2a18" />
+            <rect x="8" y="21" width="4" height="2" fill="#3a2a18" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- 섹션 전환 오버레이 -->
+      <div class="section-overlay" id="sectionOverlay">
+        <div class="big" id="sectionBig">SECTION 2 / 3</div>
+        <div class="small" id="sectionSmall">Beds 7 — 12</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="page" id="page3">
+    <iframe class="slido-frame" src="https://wall.sli.do/event/44FRiM57Xn4sMZJHb9YKwa" title="Slido Q&A"></iframe>
+    <div class="floating-qr">
+      <div class="qa-content">
+        <div class="qa-title">team_N6</div>
+        <div class="qa-subtitle">▼ 질문 입력 ▼</div>
+        <div class="qa-qr-wrap">
+          <img id="qrBig" src="qr.png" alt="Slido QR Code">
+        </div>
+        <br>
+        <div class="qa-footer">* 감사합니다 *</div>
+        <br>
+        <div class="qa-acc">[토스뱅크 1002-5757-2839]</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="page1.js"></script>
+  <script src="page2.js"></script>
+</body>
+
+</html>

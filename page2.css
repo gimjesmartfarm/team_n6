@@ -1,0 +1,513 @@
+/* ============================================
+   page2.css — 농장 시뮬레이션
+   reference 디자인 기반 (사선 트러스 천창 / full-width 베드 /
+   3명 농부 / 큰 코인&작업대 / 20×50 부추 그리드)
+   ============================================ */
+
+#page2{
+  background: linear-gradient(to bottom,
+    #b8dcff 0%,
+    #d0e8ff 8%,
+    #e8f2f8 18%,
+    #efece0 65%,
+    #c8c6bc 100%);
+}
+
+.farm-panel{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+
+/* ---- 픽셀 렌더링 ---- */
+#page2 svg{ shape-rendering: crispEdges; }
+
+/* ============ 천창 (사선 트러스) ============ */
+.roof{
+  position:absolute;
+  left:0; right:0; top:0;
+  height:14%;
+  z-index:2;
+  pointer-events:none;
+}
+.roof svg{ width:100%; height:100%; display:block; }
+
+/* ============ 해 (8꼭지, 크게, 밝게) ============ */
+.sun{
+  position:absolute;
+  width: clamp(90px, 8vw, 130px);
+  height: clamp(90px, 8vw, 130px);
+  z-index:3;
+  pointer-events:none;
+  transform: translate(-50%, -50%);
+  filter:
+    drop-shadow(0 0 28px rgba(255, 220, 80, 0.95))
+    drop-shadow(0 0 14px rgba(255, 200, 60, 0.7));
+  top: 7%;
+  left: 93%;
+}
+.sun svg{ width:100%; height:100%; }
+@keyframes sun-pulse{
+  0%, 100% { filter: drop-shadow(0 0 28px rgba(255, 220, 80, 0.95)) drop-shadow(0 0 14px rgba(255, 200, 60, 0.7)); }
+  50%      { filter: drop-shadow(0 0 36px rgba(255, 230, 110, 1))    drop-shadow(0 0 20px rgba(255, 210, 80, 0.85)); }
+}
+.sun{ animation: sun-pulse 2.5s ease-in-out infinite; }
+
+/* ============ 우측 상단 QR / 우측 하단 후원박스 ============ */
+.qr-side{
+  position:absolute;
+  top:30px; left:15px;
+  z-index:20;
+  background:#fff;
+  border:4px solid var(--ink);
+  padding:8px 8px 6px;
+  box-shadow:4px 4px 0 var(--ink);
+  text-align:center;
+  font-family:var(--pixel);
+}
+.qr-side .qr-label{
+  font-size:25px; 
+  letter-spacing:1px; 
+  margin-bottom:5px; 
+  color:#1f4e87; 
+  font-weight: bold;
+}
+.qr-side img{
+  display:block;
+  width: clamp(200px, 9vw, 140px);
+  height: clamp(200px, 9vw, 140px);
+  image-rendering:pixelated;
+}
+.qr-side .qr-sub{
+  font-size:13px; 
+  letter-spacing:1.5px; 
+  margin-top:5px; 
+  color:#c4302b;
+}
+
+.sponsor-box{
+  position:absolute;
+  bottom:14px; right:14px;
+  z-index:20;
+  background:#fff;
+  border:4px solid var(--ink);
+  padding:9px 12px;
+  box-shadow:4px 4px 0 var(--ink);
+  font-family:var(--korean);
+  font-size: clamp(10px, 0.95vw, 13px);
+  line-height:1.5;
+    font-size:20px; 
+}
+.sponsor-box .sp-title{
+  font-weight:bold; 
+  letter-spacing:2px;
+  color:#c4302b;
+}
+.sponsor-box .sp-name{
+  font-weight:bold; 
+  letter-spacing:1px;
+}
+.sponsor-box .sp-acc{
+  font-weight:bold; 
+  color:#1f4e87; 
+  letter-spacing:0.5px;
+}
+
+/* ============ 상단 표시 ============ */
+.day-counter{
+  position:absolute;
+  top:14px;
+  left:50%;
+  transform: translateX(-50%);
+  z-index:60;
+  font-family:var(--pixel);
+  font-size: clamp(13px, 1.6vw, 20px);
+  letter-spacing: 3px;
+  background: var(--ink);
+  color: #ffd23a;
+  padding: 10px 22px;
+  border: 4px solid #f3f1e8;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.section-badge{
+  position:absolute;
+  top:84px;
+  left:50%;
+  transform: translateX(-50%);
+  z-index:60;
+  font-family:var(--pixel);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  background: #f3f1e8;
+  color: var(--ink);
+  padding: 8px 14px;
+  border: 3px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* ============ 베드 영역 (full-width grid) ============ */
+.bed-area{
+  position:absolute;
+  top:18%;
+  left:2%;
+  right:2%;
+  bottom:28%;
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(10px, 1.5vw, 22px);
+  align-items: end;
+  z-index:3;
+}
+
+/* ---- 베드 본체 ---- */
+.bed{
+  position:relative;
+  height: 24%;
+  background: #f3f1e8;
+  border: 3px solid #8a7e5c;
+  box-shadow:
+    inset -3px 0 0 #a89a72,
+    inset 0 -3px 0 #a89a72,
+    3px 3px 0 rgba(0,0,0,0.15);
+}
+.perlite{
+  position:absolute;
+  inset: 3px;
+  background-color: #cfcdc4;
+  background-image:
+    radial-gradient(circle at 20% 30%, #b2afa6 1px, transparent 1.6px),
+    radial-gradient(circle at 70% 60%, #b2afa6 1px, transparent 1.6px),
+    radial-gradient(circle at 40% 80%, #969489 1px, transparent 1.6px),
+    radial-gradient(circle at 85% 15%, #969489 1px, transparent 1.6px);
+  background-size: 5px 5px, 6px 6px, 4px 4px, 7px 7px;
+}
+/* 베드 번호 — 베드 가운데 큼지막하게 */
+.bed-num{
+  position:absolute;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--pixel);
+  font-size: clamp(18px, 2.2vw, 30px);
+  color: #fff;
+  text-shadow:
+    2px 2px 0 var(--ink),
+    -2px -2px 0 var(--ink),
+    2px -2px 0 var(--ink),
+    -2px 2px 0 var(--ink),
+    0 0 6px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  z-index: 6;
+  pointer-events: none;
+}
+/* 다음 수확 베드 강조 */
+.bed.next{
+  outline: 3px dashed #c4302b;
+  outline-offset: 4px;
+  animation: next-pulse 0.8s ease-in-out infinite;
+}
+@keyframes next-pulse{
+  0%, 100% { outline-color: rgba(196,48,43,0.95); }
+  50%      { outline-color: rgba(196,48,43,0.35); }
+}
+
+/* ---- 부추 (베드 위로 자람, 20열 세로 패턴) ---- */
+.chives{
+  position:absolute;
+  bottom: 100%;
+  left: 3px;
+  right: 3px;
+  height: 0;
+  transition: height 0.6s ease;
+  pointer-events: none;
+  z-index: 2;
+  /* 세로 부추 잎만 20열 (가로 구분선은 제거) */
+  background-image:
+    repeating-linear-gradient(90deg,
+      var(--chive-color, #1f6b2a) 0 1.8%,
+      transparent 1.8% 5%);
+}
+
+/* 그루터기 (stage 0 일 때만) */
+.stubble{
+  position:absolute;
+  left: 3px;
+  right: 3px;
+  top: 1px;
+  height: 5px;
+  display:none;
+  z-index:3;
+  background-image:
+    repeating-linear-gradient(to right,
+      #5a6e2a 0 3px,
+      transparent 3px 6%);
+  background-size: 30% 100%;
+}
+.bed[data-stage="0"] .chives  { height: 0; }
+.bed[data-stage="0"] .stubble { display: block; }
+
+/* 성장 단계별 부추 높이 (조금 짧게) */
+.bed[data-stage="1"]  .chives  { height: 8px;  }
+.bed[data-stage="2"]  .chives  { height: 14px; }
+.bed[data-stage="3"]  .chives  { height: 22px; }
+.bed[data-stage="4"]  .chives  { height: 30px; }
+.bed[data-stage="5"]  .chives  { height: 38px; }
+.bed[data-stage="6"]  .chives  { height: 46px; }
+.bed[data-stage="7"]  .chives  { height: 54px; }
+.bed[data-stage="8"]  .chives  { height: 62px; }
+.bed[data-stage="9"]  .chives  { height: 70px; }
+.bed[data-stage="10"] .chives  { height: 78px; }
+.bed[data-stage="11"] .chives  { height: 86px; }
+.bed[data-stage="12"] .chives  { height: 94px; }
+.bed[data-stage="13"] .chives  { height: 102px;}
+.bed[data-stage="14"] .chives  { height: 110px;}
+.bed[data-stage="15"] .chives  { height: 118px;}
+.bed[data-stage="16"] .chives  { height: 124px;}
+.bed[data-stage="17"] .chives  { height: 130px;}
+.bed[data-stage="18"] .chives  { height: 138px;}
+
+/* 단계별 색상 */
+.bed[data-stage="1"]   { --chive-color: #cfe98a; }
+.bed[data-stage="2"]   { --chive-color: #c2e478; }
+.bed[data-stage="3"]   { --chive-color: #b3de64; }
+.bed[data-stage="4"]   { --chive-color: #a3d654; }
+.bed[data-stage="5"]   { --chive-color: #95cc46; }
+.bed[data-stage="6"]   { --chive-color: #86c23c; }
+.bed[data-stage="7"]   { --chive-color: #79b834; }
+.bed[data-stage="8"]   { --chive-color: #6cad2e; }
+.bed[data-stage="9"]   { --chive-color: #5fa22a; }
+.bed[data-stage="10"]  { --chive-color: #559726; }
+.bed[data-stage="11"]  { --chive-color: #4c8c24; }
+.bed[data-stage="12"]  { --chive-color: #438222; }
+.bed[data-stage="13"]  { --chive-color: #3b7820; }
+.bed[data-stage="14"]  { --chive-color: #336e1f; }
+.bed[data-stage="15"]  { --chive-color: #2d651e; }
+.bed[data-stage="16"]  { --chive-color: #285c1d; }
+.bed[data-stage="17"]  { --chive-color: #23541c; }
+.bed[data-stage="18"]  { --chive-color: #1f6b2a; }
+
+.bed.cutting .chives { transition: height 0.18s ease; }
+.bed.cutting { animation: harvest-flash 0.16s ease 3; }
+@keyframes harvest-flash{
+  0%, 100% { filter: brightness(1); }
+  50%      { filter: brightness(1.4) saturate(0.6); }
+}
+
+/* ============ 작업동 (work-area) ============ */
+.work-area{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height: 26%;
+  background: linear-gradient(180deg, #bfbcb4 0%, #8d8a82 100%);
+  border-top: 5px solid #5a5750;
+  z-index:4;
+}
+.work-area::before{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:0;
+  height:5px;
+  background: repeating-linear-gradient(90deg, #5a5750 0 28px, transparent 28px 60px);
+}
+.work-area::after{
+  content:"";
+  position:absolute;
+  inset: 5px 0 0;
+  background: repeating-linear-gradient(90deg, transparent 0 80px, rgba(0,0,0,0.05) 80px 82px);
+  pointer-events:none;
+}
+
+/* 작업대 (crate) — 사이즈 업 */
+.crate{
+  position:absolute;
+  width: 80px;
+  height: 70px;
+  background: linear-gradient(180deg, #ffd23a 0%, #d99000 100%);
+  border: 3px solid var(--ink);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+  z-index:5;
+}
+.crate::before{
+  content:"";
+  position:absolute;
+  inset: 5px;
+  border: 2px solid rgba(0,0,0,0.25);
+  background: repeating-linear-gradient(90deg, transparent 0 10px, rgba(0,0,0,0.15) 10px 12px);
+}
+.crate.c1{ bottom: 30px; left: calc(50% - 135px); }
+.crate.c2{ bottom: 18px; left: calc(50% - 40px);  }
+.crate.c3{ bottom: 30px; left: calc(50% + 55px);  }
+
+.crate .pile{
+  position:absolute;
+  left:-8px; right:-8px;
+  top:-22px;
+  height: 26px;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0 2px,
+      #2a5020 2px 3px,
+      transparent 3px 6px,
+      #1a3a14 6px 7px,
+      transparent 7px 10px),
+    linear-gradient(180deg, #3e7028 0%, #1f4012 100%);
+  border: 2px solid var(--ink);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  display:none;
+}
+.crate.has-chives .pile{ display:block; }
+
+/* 부추 떨굴 지점 */
+.deposit{
+  position:absolute;
+  bottom: 18px;
+  left: calc(50% - 8px);
+  width: 16px;
+  height: 16px;
+  background: #c4302b;
+  border-radius: 50%;
+  opacity: 0.35;
+  z-index: 5;
+  animation: deposit-pulse 1.4s ease-in-out infinite;
+}
+@keyframes deposit-pulse{
+  0%, 100% { transform: scale(1);   opacity: 0.35; }
+  50%      { transform: scale(1.4); opacity: 0.7;  }
+}
+
+/* ============ 농부 3명 (사이즈 업) ============ */
+.farmer{
+  position:absolute;
+  width: 60px;
+  height: 90px;
+  z-index: 25;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+  transition: left 0.6s ease-in-out, top 0.6s ease-in-out;
+}
+.farmer-sprite{ width:100%; height:100%; }
+.farmer .arm-r { transform-origin: 13px 11px; transition: transform 0.2s ease; }
+.farmer.swing .arm-r { animation: f-swing 0.32s ease-in-out infinite; }
+@keyframes f-swing{
+  0%, 100% { transform: rotate(-30deg); }
+  50%      { transform: rotate(45deg); }
+}
+.farmer.walk .farmer-body { animation: f-bob 0.34s ease-in-out infinite; }
+@keyframes f-bob{
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+.farmer .mouth-smile{ display: none; }
+.farmer.smiling .mouth-neutral{ display: none; }
+.farmer.smiling .mouth-smile{ display: block; }
+.farmer .bundle{ display: none; }
+.farmer.holding .bundle{ display: block; }
+.farmer.flipped{ transform: translate(-50%, -100%) scaleX(-1); }
+.farmer.flipped.smiling{ transform: translate(-50%, -100%) scaleX(-1); }
+
+/* ============ 코인 (사이즈 업) ============ */
+.coin{
+  position:absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 27;
+  pointer-events: none;
+  animation: coin-drop 0.7s cubic-bezier(0.45, 0, 0.65, 1) forwards;
+}
+.coin svg{ width:100%; height:100%; }
+@keyframes coin-drop{
+  0%   { transform: translateY(-200px) scale(0.5); opacity: 0; }
+  15%  { transform: translateY(-180px) scale(1);   opacity: 1; }
+  100% { transform: translateY(0)      scale(0.6); opacity: 0.1; }
+}
+
+/* ============ 스파클 (조금 크게) ============ */
+.sparkle{
+  position:absolute;
+  z-index: 26;
+  pointer-events: none;
+  font-family: var(--pixel);
+  font-size: 20px;
+  color: #ffd23a;
+  text-shadow: 0 0 6px rgba(255, 230, 110, 0.85);
+  animation: sparkle-pop 0.85s ease-out forwards;
+}
+@keyframes sparkle-pop{
+  0%   { transform: scale(0) translate(0,0); opacity: 0; }
+  30%  { transform: scale(1.4) translate(var(--dx, 0), var(--dy, -10px)); opacity: 1; }
+  100% { transform: scale(0.4) translate(var(--dx, 0), calc(var(--dy, -10px) * 2)); opacity: 0; }
+}
+
+/* ============ 섹션 전환 오버레이 ============ */
+.section-overlay{
+  position:absolute;
+  inset:0;
+  z-index: 80;
+  background: rgba(20, 20, 20, 0.78);
+  display:none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  color: #ffd23a;
+  font-family: var(--pixel);
+}
+.section-overlay.show{ display: flex; }
+.section-overlay .big{
+  font-size: clamp(28px, 4vw, 56px);
+  letter-spacing: 6px;
+}
+.section-overlay .small{
+  font-size: clamp(14px, 1.6vw, 20px);
+  letter-spacing: 3px;
+  color: #fff;
+}
+
+/* ============================================
+   네비게이션 화살표 (page2에서만 표시)
+   ============================================ */
+.nav-arrow {
+  position: fixed !important;
+  top: 50% !important;
+  margin-top: -30px;
+
+  background: #ffd23a !important;
+  border: 4px solid #1a1a1a !important;
+  box-shadow: 4px 4px 0 #1a1a1a !important;
+  color: #1a1a1a !important;
+
+  font-family: 'Press Start 2P', monospace, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  width: 60px !important;
+  height: 60px !important;
+
+  z-index: 99999 !important;
+  cursor: pointer !important;
+  display: none;
+  align-items: center !important;
+  justify-content: center !important;
+  user-select: none;
+
+  transition: background 0.1s;
+}
+
+/* page2 가 활성 상태일 때만 표시 */
+#page2.active ~ .nav-arrow,
+body:has(#page2.active) .nav-arrow {
+  display: flex !important;
+}
+
+.nav-arrow.left  { left:  20px !important; }
+.nav-arrow.right { right: 20px !important; }
+
+.nav-arrow:hover {
+  background: #ffe066 !important;
+}
+.nav-arrow:active {
+  margin-top: -28px !important;
+  margin-left: 2px !important;
+  box-shadow: 2px 2px 0 #1a1a1a !important;
+}

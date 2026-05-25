@@ -1,0 +1,65 @@
+/* ============================================
+   common.css — 공통 변수 / 폰트 / 페이지 시스템
+   ============================================ */
+
+:root{
+  /* 색상 팔레트 */
+  --sky-top:#bfe8ff;
+  --sky-mid:#d4f0ff;
+  --sky-bot:#e6f7ff;
+  --frame:#f3f1e8;
+  --frame-d:#bcb89e;
+  --ink:#1a1a1a;
+  --gold:#ffd23a;
+  --gold-d:#d99000;
+  --perlite:#cfcdc4;
+  --perlite-d:#a8a6a0;
+  --concrete:#bfbcb4;
+  --concrete-d:#8d8a82;
+  --door-r:#c44b3e;
+  --door-r-d:#8c2e22;
+  --door-l:#3a7bc8;
+  --door-l-d:#1f4e87;
+  --metal:#9aa0a8;
+  --metal-d:#5a606a;
+  --glass:rgba(180,220,235,0.32);
+  --glass-edge:#88aab8;
+
+  /* 폰트 */
+  --pixel:'Press Start 2P', monospace;
+  --korean:'Gowun Dodum','Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+}
+
+/* 리셋 */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  image-rendering:pixelated;
+  -webkit-font-smoothing:none;
+  -moz-osx-font-smoothing:auto;
+}
+
+html, body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#000;
+  font-family:var(--korean);
+  color:var(--ink);
+}
+
+body{
+  background:linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-bot) 100%);
+  position:relative;
+}
+
+/* 페이지 컨테이너 */
+.page{
+  position:absolute;
+  inset:0;
+  display:none;
+}
+.page.active{
+  display:block;
+}

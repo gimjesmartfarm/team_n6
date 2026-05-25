@@ -1,0 +1,114 @@
+/* ============================================
+   page3.css — Q&A (Slido 임베드 + Floating QR)
+   ============================================ */
+
+#page3 {
+  position: relative;
+  background: var(--frame); /* Slido 로딩 전 빈 배경색 */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Slido 화면을 전체 화면으로 꽉 채우기 */
+.slido-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* [배치 및 전체 크기 세팅] */
+.floating-qr {
+  position: absolute;
+  top: 1vw;  /* 고정 px 대신 화면 너비에 비례한 여백 */
+  left: 1vw; /* 좌측 여백도 화면 너비에 비례 */
+  
+  /* ⭐️ 화면 너비와 높이의 정확히 20% 차지 */
+  width: 20vw;
+  height: 20vw;
+
+
+  box-sizing: border-box;
+  overflow: hidden; /* 내부 요소가 박스 밖으로 탈출하는 것 방지 */
+  background: #fff;
+  border: 4px solid var(--ink);
+  padding: 1.2vw; /* 패딩도 화면 크기에 따라 동적으로 변화 */
+  
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  animation: floatUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* [내부 컨텐츠 레이아웃 세팅] */
+.floating-qr .qa-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* 위, 중간(QR), 아래 공간을 동적으로 분배 */
+  gap: 0.5vh;
+}
+
+/* [QR 코드 동적 스케일링] */
+.floating-qr .qa-qr-wrap {
+  flex: 1;          /* 텍스트 영역을 제외한 남은 세로 공간을 QR이 전부 차지 */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;     /* Flexbox 내부에서 이미지가 삐져나오는 버그 방지 */
+}
+
+.floating-qr img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* ⭐️ 핵심: 어떤 화면비에서도 QR 코드가 찌그러지지 않고 정사각형 유지 */
+  display: block;
+}
+
+/* [텍스트 동적 스케일링]
+  clamp(최소크기, 화면너비에_비례한_가변크기, 최대크기)
+  화면 창 크기를 조절하면 글자 크기도 실시간으로 부드럽게 변합니다.
+*/
+.qa-title {
+  /* 화면 너비가 바뀔 때 1.4vw 크기로 움직이되, 최소 11px ~ 최대 20px까지만 변함 */
+  font-size: clamp(11px, 1.4vw, 20px); 
+  font-weight:bold; 
+  letter-spacing:2px;
+}
+
+.qa-subtitle {
+  font-weight:bold; 
+  letter-spacing:2px;
+  color:#c4302b;
+    font-size: clamp(11px, 1.4vw, 20px); 
+}
+
+.floating-qr .qa-footer {
+  font-weight:bold; 
+  color:#1f4e87; 
+  letter-spacing:0.5px;
+    font-size: clamp(11px, 1.4vw, 20px); 
+}
+
+.floating-qr .qa-acc {
+  font-weight:bold; 
+  letter-spacing:0.3px;
+    font-size: clamp(9px, 1.4vw, 18px); 
+}
+
+
+/* 페이지 전환 시 QR코드가 부드럽게 나타나는 애니메이션 (선택 사항) */
+@keyframes floatUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

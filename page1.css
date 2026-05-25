@@ -1,0 +1,72 @@
+/* ============================================
+   page1.css — 입구 페이지 (reference 디자인)
+   슬라이딩 도어 + 유리 측벽 + 빼곡한 부추 베드
+   ============================================ */
+
+#page1{
+  z-index:3;
+  background: linear-gradient(to bottom, #cfe9ff 0%, #e8f4ff 55%, #f4faff 100%);
+}
+
+/* 픽셀 렌더링 */
+#page1 svg{ shape-rendering: crispEdges; }
+.ko{
+  font-family: 'Gowun Dodum', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+}
+
+/* ----- 입구 SVG 컨테이너 ----- */
+.entrance-wrap{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.entrance-svg{
+  width: min(980px, 96vw);
+  height: auto;
+  max-height: 96vh;
+}
+
+/* ----- 슬라이딩 도어 ----- */
+#leftDoor  { transition: transform 1.2s cubic-bezier(0.45, 0, 0.25, 1); }
+#rightDoor { transition: transform 1.2s cubic-bezier(0.45, 0, 0.25, 1); }
+#page1.opening #leftDoor  { transform: translateX(-66px); }
+#page1.opening #rightDoor { transform: translateX( 66px); }
+
+/* ----- START 버튼 ----- */
+.start-btn{
+  position:absolute;
+  bottom:6%;
+  left:50%;
+  transform: translateX(-50%);
+  font-family: var(--pixel);
+  font-size: clamp(12px, 1.6vw, 18px);
+  letter-spacing: 2px;
+  padding: 16px 32px;
+  color: #fff;
+  background: #2a6b2a;
+  border: 4px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  cursor: pointer;
+  z-index: 5;
+  animation: btn-bob 1.6s ease-in-out infinite;
+}
+.start-btn:hover{
+  background: #38882f;
+  transform: translateX(-50%) translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--ink), 0 0 24px rgba(58, 145, 52, 0.55);
+}
+.start-btn:active{
+  transform: translateX(-50%) translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.start-btn.hide{
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+@keyframes btn-bob{
+  0%, 100% { box-shadow: 6px 6px 0 var(--ink); }
+  50%      { box-shadow: 6px 6px 0 var(--ink), 0 0 28px rgba(58, 145, 52, 0.55); }
+}
