@@ -13,12 +13,26 @@
 </head>
 
 <body>
-
+<!-- 
   <button class="nav-arrow left" id="btnToPage1" aria-label="이전 페이지">&lt;</button>
-  <button class="nav-arrow right" id="btnToPage3" aria-label="다음 페이지">&gt;</button>
+  <button class="nav-arrow right" id="btnToPage3" aria-label="다음 페이지">&gt;</button> -->
 
-  <!-- ============ PAGE 1: 입구 (reference 디자인 그대로 + 실훈/팀원 추가) ============ -->
+  <!-- ============ PAGE 1: 입구 ============ -->
   <div class="page active" id="page1">
+
+    <!-- 상단 타이틀 (나무 간판 스타일) -->
+    <div class="page-title" role="heading" aria-level="1">
+      <span class="nail tl" aria-hidden="true"></span>
+      <span class="nail tr" aria-hidden="true"></span>
+      <span class="nail bl" aria-hidden="true"></span>
+      <span class="nail br" aria-hidden="true"></span>
+      <span class="title-leaf" aria-hidden="true">🌱</span>
+      <span class="title-ko">경영형</span>
+      <span class="title-n6">N6</span>
+      <span class="title-ko">작기계획</span>
+      <span class="title-leaf" aria-hidden="true">🌱</span>
+    </div>
+
     <div class="entrance-wrap">
       <svg class="entrance-svg" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
         <!-- Sky -->
@@ -509,7 +523,7 @@
 
       <!-- 우측 상단 QR -->
       <div class="qr-side">
-        <div class="qr-label">질문하기</div>
+        <div class="qr-label">▼질문 입력▼</div>
         <img id="qrSide" src="qr.png" alt="QR Code">
         <!-- <div class="qr-sub">SCAN ME</div> -->
       </div>
@@ -746,10 +760,8 @@
         <div class="qa-qr-wrap">
           <img id="qrBig" src="qr.png" alt="Slido QR Code">
         </div>
-        <br>
-        <div class="qa-footer">* 감사합니다 *</div>
-        <br>
-        <div class="qa-acc">[토스뱅크 1002-5757-2839]</div>
+        <!-- <div class="qa-footer">* 감사합니다 *</div>
+        <div class="qa-acc">[토스뱅크 1002-5757-2839]</div> -->
       </div>
     </div>
   </div>

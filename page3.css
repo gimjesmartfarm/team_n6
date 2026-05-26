@@ -23,17 +23,15 @@
   position: absolute;
   top: 1vw;  /* 고정 px 대신 화면 너비에 비례한 여백 */
   left: 1vw; /* 좌측 여백도 화면 너비에 비례 */
-  
-  /* 화면 너비와 높이의 정확히 20% 차지 */
-  width: 20vw;
-  height: 20vw;
 
+  /* 너비만 고정, 세로는 내용에 맞춰 자유롭게 늘어남 */
+  width: 20vw;
 
   box-sizing: border-box;
-  overflow: hidden; /* 내부 요소가 박스 밖으로 탈출하는 것 방지 */
   background: #fff;
   border: 4px solid var(--ink);
-  padding: 1.2vw; /* 패딩도 화면 크기에 따라 동적으로 변화 */
+  /* 좌우 패딩 1vw → 박스 너비의 5%씩 차지 → 콘텐츠 폭이 박스의 90% */
+  padding: 1vw;
   
   display: flex;
   flex-direction: column;
@@ -46,22 +44,23 @@
 /* [내부 컨텐츠 레이아웃 세팅] */
 .floating-qr .qa-content {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* 위, 중간(QR), 아래 공간을 동적으로 분배 */
-  gap: 0.5vh;
+  gap: 0.6vw;
 }
 
-/* [QR 코드 동적 스케일링] */
+/* [QR 코드 동적 스케일링]
+   - 박스 좌우 패딩이 각각 1vw(= 박스의 5%) 이므로
+     콘텐츠 폭(100%) = 박스의 90%
+   - aspect-ratio 로 정사각형 유지 → 높이는 자동으로 너비와 동일
+*/
 .floating-qr .qa-qr-wrap {
-  flex: 1;          /* 텍스트 영역을 제외한 남은 세로 공간을 QR이 전부 차지 */
   width: 100%;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 0;     /* Flexbox 내부에서 이미지가 삐져나오는 버그 방지 */
 }
 
 .floating-qr img {
@@ -87,7 +86,7 @@
 .qa-subtitle {
   font-weight:bold; 
   letter-spacing:2px;
-  color:#c4302b;
+  color:#1f4e87; 
     font-size: clamp(11px, 1.4vw, 20px); 
 }
 
