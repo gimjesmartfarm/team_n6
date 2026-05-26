@@ -13,8 +13,8 @@
 </head>
 
 <body>
-<!-- 
-  <button class="nav-arrow left" id="btnToPage1" aria-label="이전 페이지">&lt;</button>
+
+  <!-- <button class="nav-arrow left" id="btnToPage1" aria-label="이전 페이지">&lt;</button>
   <button class="nav-arrow right" id="btnToPage3" aria-label="다음 페이지">&gt;</button> -->
 
   <!-- ============ PAGE 1: 입구 ============ -->
@@ -32,6 +32,9 @@
       <span class="title-ko">작기계획</span>
       <span class="title-leaf" aria-hidden="true">🌱</span>
     </div>
+
+    <!-- 줌인 마지막에 화이트 플래시 (페이지 2 전환을 부드럽게) -->
+    <div class="zoom-flash" aria-hidden="true"></div>
 
     <div class="entrance-wrap">
       <svg class="entrance-svg" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
@@ -523,7 +526,7 @@
 
       <!-- 우측 상단 QR -->
       <div class="qr-side">
-        <div class="qr-label">▼질문 입력▼</div>
+        <div class="qr-label">▼질문입력▼</div>
         <img id="qrSide" src="qr.png" alt="QR Code">
         <!-- <div class="qr-sub">SCAN ME</div> -->
       </div>
@@ -760,7 +763,9 @@
         <div class="qa-qr-wrap">
           <img id="qrBig" src="qr.png" alt="Slido QR Code">
         </div>
-        <!-- <div class="qa-footer">* 감사합니다 *</div>
+        <!-- <br>
+        <div class="qa-footer">* 감사합니다 *</div>
+        <br>
         <div class="qa-acc">[토스뱅크 1002-5757-2839]</div> -->
       </div>
     </div>

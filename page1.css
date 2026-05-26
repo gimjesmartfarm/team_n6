@@ -34,6 +34,71 @@
 #page1.opening #leftDoor  { transform: translateX(-66px); }
 #page1.opening #rightDoor { transform: translateX( 66px); }
 
+/* ----- "문으로 걸어 들어가는" 줌인 카메라 효과 -----
+   SVG viewBox 320x240 안에서 문 중앙은 대략 (160, 139)
+   → transform-origin: 50% 58%
+   문 높이(SVG 좌표 158/240 ≈ 65%)가 화면을 거의 채우는 정도까지만 확대 (scale 2)
+   • 단일 timing function + 최소 keyframe 으로 끊김 제거
+   • blur 미사용 (GPU rasterize 비용 ↓ = 더 부드러움)
+   • translateZ(0) 으로 GPU layer promote
+*/
+.entrance-svg{
+  transform-origin: 50% 58%;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+#page1.zooming .entrance-svg{
+  animation: door-walk-in 2.5s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+}
+@keyframes door-walk-in{
+  /* 88% 까지는 불투명 유지 → 마지막 12% 에서만 부드럽게 페이드 */
+  0%   { transform: scale(1)    translateZ(0); filter: brightness(1);    opacity: 1; }
+  88%  { transform: scale(1.86) translateZ(0); filter: brightness(1.07); opacity: 1; }
+  100% { transform: scale(2)    translateZ(0); filter: brightness(1.1);  opacity: 0; }
+}
+
+/* 상단 타이틀: 카메라가 전진하며 머리 위로 지나가는 느낌 (길게 페이드) */
+#page1.zooming .page-title{
+  animation: title-pass-overhead 1.3s ease-in 0.3s forwards;
+}
+@keyframes title-pass-overhead{
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-28px) scale(1.06);
+  }
+}
+
+/* 줌 후반에 화이트 플래시 → 페이지2로의 색감 점프 완화
+   천천히(1.4s) 차오르며 마지막에 만 부드럽게 흰색 베일 */
+.zoom-flash{
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 58%,
+      rgba(255,255,255,0.92) 0%,
+      rgba(232,244,255,0.78) 55%,
+      rgba(207,233,255,0.55) 100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+  will-change: opacity;
+}
+#page1.zooming .zoom-flash{
+  animation: zoom-flash-in 1.4s ease-in 1.3s forwards;
+}
+@keyframes zoom-flash-in{
+  to { opacity: 1; }
+}
+
+/* 페이지 2 등장도 부드럽게 페이드인 → page1 -> page2 컷 전환 제거 */
+#page2.fade-in-from-door{
+  animation: page2-enter 0.45s ease-out forwards;
+}
+@keyframes page2-enter{
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 /* ----- START 버튼 ----- */
 .start-btn{
   position:absolute;
@@ -74,7 +139,7 @@
 /* ----- 상단 타이틀 (나무 간판) ----- */
 .page-title{
   position: absolute;
-  top: 8%;
+  top: 3%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 6;

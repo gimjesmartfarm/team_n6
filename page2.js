@@ -333,10 +333,33 @@ async function transitionToSection(newSec) {
   await sleep(300);
 }
 
-// ----- Q&A 전환 -----
+// ----- Q&A 전환 (page2 → page3 부드러운 크로스페이드) -----
 function showQAScreen() {
   isFarmLoopActive = false;
-  switchPage('page2', 'page3');
+
+  const page2 = document.getElementById('page2');
+  const page3 = document.getElementById('page3');
+  if (!page2 || !page3) return;
+
+  // 중복 호출 방지 (자동 + 수동 클릭이 겹칠 수 있음)
+  if (page2.classList.contains('exiting')) return;
+
+  // 섹션 오버레이가 떠있으면 닫고 시작
+  const ov = document.getElementById('sectionOverlay');
+  if (ov) ov.classList.remove('show');
+
+  // 1) page3 를 먼저 활성화 + entering 클래스로 페이드인 시작
+  //    (page2 는 .active 유지한 채 위에서 사라짐 → 진짜 크로스페이드)
+  page3.classList.add('active', 'entering');
+
+  // 2) page2 exit 애니메이션 시작
+  page2.classList.add('exiting');
+
+  // 3) 전환 완료 후 정리: page2 비활성화, 클래스 제거
+  setTimeout(() => {
+    page2.classList.remove('active', 'exiting');
+    page3.classList.remove('entering');
+  }, 1100);
 }
 
 // ----- 메인 루프 (page1.js에서 호출) -----
