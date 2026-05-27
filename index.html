@@ -750,6 +750,26 @@
         <div class="small" id="sectionSmall">Beds 7 — 12</div>
       </div>
 
+      <!-- SUCCESS 버튼 등장 시 배경 어둡게 깔리는 베일 -->
+      <div class="success-veil" id="successVeil" aria-hidden="true"></div>
+
+      <!-- 18베드 완료 시 등장하는 SUCCESS 버튼 (페이지1의 Enter 버튼 스타일) -->
+      <button class="success-btn" id="successBtn" type="button" aria-label="Q&amp;A 시작">▶ SUCCESS</button>
+
+      <!-- BGM 컨트롤 (우측 상단) -->
+      <div class="bgm-controls" id="bgmControls" role="group" aria-label="배경음악 제어">
+        <audio id="bgmAudio" src="boochooteam.mp3" preload="auto"></audio>
+        <button class="bgm-btn bgm-play-btn" id="bgmPlayBtn" type="button" aria-label="재생/정지">
+          <svg class="bgm-ico ico-play"  viewBox="0 0 12 12" aria-hidden="true"><polygon points="2,1 2,11 11,6" fill="currentColor"/></svg>
+          <svg class="bgm-ico ico-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1" width="3" height="10" fill="currentColor"/><rect x="7" y="1" width="3" height="10" fill="currentColor"/></svg>
+        </button>
+        <input type="range" class="bgm-volume" id="bgmVolume" min="0" max="100" value="50" step="1" aria-label="볼륨">
+        <button class="bgm-btn bgm-mute-btn" id="bgmMuteBtn" type="button" aria-label="음소거 토글">
+          <svg class="bgm-ico ico-vol"  viewBox="0 0 14 12" aria-hidden="true"><polygon points="1,4 4,4 7,1 7,11 4,8 1,8" fill="currentColor"/><path d="M9 3 Q11 6 9 9" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M10.5 1.5 Q13.5 6 10.5 10.5" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+          <svg class="bgm-ico ico-mute" viewBox="0 0 14 12" aria-hidden="true"><polygon points="1,4 4,4 7,1 7,11 4,8 1,8" fill="currentColor"/><line x1="9" y1="3" x2="13" y2="9" stroke="currentColor" stroke-width="1.4"/><line x1="13" y1="3" x2="9" y2="9" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+      </div>
+
     </div>
   </div>
 

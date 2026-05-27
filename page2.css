@@ -539,3 +539,173 @@ body:has(#page2.exiting) .nav-arrow {
   transition: opacity 0.4s ease-out;
   pointer-events: none;
 }
+
+/* ============================================
+   SUCCESS 버튼 (18베드 완료 시 등장)
+   페이지1의 Enter 버튼과 동일한 픽셀 스타일 + 등장 애니메이션
+   ============================================ */
+.success-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(14px, 2vw, 22px);
+  letter-spacing: 3px;
+  padding: 20px 38px;
+  color: #fff;
+  background: #2a6b2a;
+  border: 4px solid #1a1a1a;
+  box-shadow: 6px 6px 0 #1a1a1a;
+  cursor: pointer;
+  z-index: 50;             /* 농장 위 모든 요소보다 위 */
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+}
+.success-btn.show {
+  pointer-events: auto;
+  animation:
+    success-pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+    success-bob   1.6s ease-in-out 0.55s infinite;
+}
+.success-btn:hover {
+  background: #38882f;
+}
+.success-btn:active {
+  transform: translate(-50%, -50%) translate(3px, 3px) !important;
+  box-shadow: 2px 2px 0 #1a1a1a;
+  animation: none;
+}
+.success-btn.hide {
+  animation: success-pop-out 0.35s ease-in forwards;
+  pointer-events: none;
+}
+
+@keyframes success-pop-in {
+  0%   { transform: translate(-50%, -50%) scale(0) rotate(-8deg); opacity: 0; }
+  60%  { transform: translate(-50%, -50%) scale(1.12) rotate(2deg);  opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1)    rotate(0);     opacity: 1; }
+}
+@keyframes success-pop-out {
+  0%   { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0.85); opacity: 0; }
+}
+@keyframes success-bob {
+  0%, 100% { box-shadow: 6px 6px 0 #1a1a1a; }
+  50%      { box-shadow: 6px 6px 0 #1a1a1a, 0 0 32px rgba(58, 145, 52, 0.7); }
+}
+
+/* SUCCESS 버튼 등장 시 배경에 살짝 어두운 베일 */
+.success-veil {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%,
+              rgba(0,0,0,0) 0%,
+              rgba(0,0,0,0.15) 60%,
+              rgba(0,0,0,0.28) 100%);
+  z-index: 45;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-out;
+}
+.success-veil.show { opacity: 1; }
+
+
+/* ============================================
+   BGM 컨트롤 (우측 상단)
+   페이지2 active 일 때만 표시
+   ============================================ */
+.bgm-controls {
+  position: absolute;
+  top: 18px;
+  right: 18px;           
+  display: none;        
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  background: #1a1a1a;
+  border: 3px solid #ffffff;
+  box-shadow: 4px 4px 0 #1a1a1a;
+  z-index: 40;
+  user-select: none;
+  font-family: 'Press Start 2P', monospace;
+}
+#page2.active .bgm-controls {
+  display: inline-flex;
+}
+
+.bgm-controls audio { display: none; }
+
+/* 재생/음소거 버튼 공통 */
+.bgm-btn {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffd23a;
+  border: 2px solid #1a1a1a;
+  box-shadow: 2px 2px 0 #1a1a1a;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.1s;
+}
+.bgm-btn:hover  { background: #ffe066; }
+.bgm-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 #1a1a1a; }
+
+.bgm-ico { width: 14px; height: 14px; display: block; }
+
+/* 재생 / 정지 아이콘 스왑 (.playing 클래스로 토글) */
+.bgm-play-btn .ico-pause { display: none; }
+.bgm-play-btn.playing .ico-play  { display: none; }
+.bgm-play-btn.playing .ico-pause { display: block; }
+
+/* 음소거 아이콘 스왑 */
+.bgm-mute-btn .ico-mute { display: none; }
+.bgm-mute-btn.muted .ico-vol  { display: none; }
+.bgm-mute-btn.muted .ico-mute { display: block; }
+
+/* 볼륨 슬라이더 (range input) — 픽셀 게임풍 커스터마이즈 */
+.bgm-volume {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 12px;
+  background: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+.bgm-volume::-webkit-slider-runnable-track {
+  height: 6px;
+  background: #555;
+  border: 1.5px solid #000;
+  border-radius: 0;
+}
+.bgm-volume::-moz-range-track {
+  height: 6px;
+  background: #555;
+  border: 1.5px solid #000;
+  border-radius: 0;
+}
+.bgm-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 14px;
+  background: #ffd23a;
+  border: 2px solid #1a1a1a;
+  border-radius: 0;
+  margin-top: -5px;
+  cursor: pointer;
+}
+.bgm-volume::-moz-range-thumb {
+  width: 10px;
+  height: 12px;
+  background: #ffd23a;
+  border: 2px solid #1a1a1a;
+  border-radius: 0;
+  cursor: pointer;
+}

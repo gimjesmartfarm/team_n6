@@ -337,6 +337,12 @@ async function transitionToSection(newSec) {
 function showQAScreen() {
   isFarmLoopActive = false;
 
+  // 페이지2 떠남 → BGM 정지
+  bgmStop();
+
+  // 혹시 SUCCESS 버튼/베일이 남아있다면 제거
+  hideSuccessButton();
+
   const page2 = document.getElementById('page2');
   const page3 = document.getElementById('page3');
   if (!page2 || !page3) return;
@@ -368,6 +374,9 @@ async function startFarmLoop() {
   globalDay = 0;
   currentSection = 1;
   for (let i = 1; i <= TOTAL_BEDS; i++) lastCut[i] = null;
+
+  // 페이지2 진입 1초 뒤 BGM 자동재생 예약
+  scheduleBgmAutoplay();
 
   buildBeds();
   updateBedsForSection(1);
@@ -405,9 +414,9 @@ async function startFarmLoop() {
     await harvestDay(slotInSec, dur, activeIdx);
   }
 
-  // 18일 끝 → Q&A 화면
+  // 18일 끝 → SUCCESS 버튼 등장 (사용자가 클릭해야 Q&A 화면으로)
   await sleep(700);
-  showQAScreen();
+  showSuccessButton();
 }
 
 // ============================================
@@ -417,6 +426,8 @@ const btnP1 = document.getElementById('btnToPage1');
 if (btnP1) {
   btnP1.addEventListener('click', () => {
     isFarmLoopActive = false;
+    bgmStop();                        // 페이지1 복귀 시 BGM 정지
+    hideSuccessButton();
     const page1 = document.getElementById('page1');
     const startBtn = document.getElementById('startBtn');
     if (page1) page1.classList.remove('opening');
@@ -432,5 +443,134 @@ if (btnP3) {
     const overlay = document.getElementById('sectionOverlay');
     if (overlay) overlay.classList.remove('show');
     showQAScreen();
+  });
+}
+
+
+// ============================================
+// SUCCESS 버튼 (18베드 완료 → 사용자 클릭 → Q&A)
+// ============================================
+const successBtn   = document.getElementById('successBtn');
+const successVeil  = document.getElementById('successVeil');
+
+function showSuccessButton() {
+  if (!successBtn) return;
+  // 베일 먼저 부드럽게 깔고 → 버튼 등장
+  if (successVeil) successVeil.classList.add('show');
+  successBtn.classList.remove('hide');
+  successBtn.classList.add('show');
+}
+
+function hideSuccessButton() {
+  if (!successBtn) return;
+  successBtn.classList.remove('show');
+  successBtn.classList.add('hide');
+  if (successVeil) successVeil.classList.remove('show');
+}
+
+if (successBtn) {
+  successBtn.addEventListener('click', () => {
+    // 버튼 톡 사라지는 애니메이션 → 그 다음 Q&A 전환
+    hideSuccessButton();
+    setTimeout(() => showQAScreen(), 300);
+  });
+}
+
+
+// ============================================
+// BGM (boohooteam.mp3)
+//   - 페이지2 진입 1초 뒤 자동재생
+//   - 페이지2를 벗어나면 정지
+//   - 반복 없음
+//   - 재생/정지, 볼륨, 음소거 컨트롤
+// ============================================
+const bgmAudio    = document.getElementById('bgmAudio');
+const bgmPlayBtn  = document.getElementById('bgmPlayBtn');
+const bgmMuteBtn  = document.getElementById('bgmMuteBtn');
+const bgmVolume   = document.getElementById('bgmVolume');
+
+let bgmAutoplayTimer = null;
+let bgmLastVolume    = 0.5;       // 음소거 토글 시 복원할 볼륨 기억
+
+if (bgmAudio) {
+  bgmAudio.loop = false;
+  bgmAudio.volume = bgmLastVolume;
+
+  // 노래가 끝나면 재생 아이콘으로 복귀 (반복 없음)
+  bgmAudio.addEventListener('ended', () => {
+    if (bgmPlayBtn) bgmPlayBtn.classList.remove('playing');
+  });
+  // 재생 시작/일시정지 시 아이콘 동기화 (외부 트리거 대비)
+  bgmAudio.addEventListener('play',  () => bgmPlayBtn && bgmPlayBtn.classList.add('playing'));
+  bgmAudio.addEventListener('pause', () => bgmPlayBtn && bgmPlayBtn.classList.remove('playing'));
+}
+
+function bgmStart() {
+  if (!bgmAudio) return;
+  // play() 는 Promise 반환. 자동재생 정책 위반 시 reject 가능 → 조용히 무시.
+  const p = bgmAudio.play();
+  if (p && typeof p.catch === 'function') p.catch(() => { /* autoplay blocked */ });
+}
+
+function bgmStop() {
+  if (!bgmAudio) return;
+  if (bgmAutoplayTimer) { clearTimeout(bgmAutoplayTimer); bgmAutoplayTimer = null; }
+  bgmAudio.pause();
+  bgmAudio.currentTime = 0;
+}
+
+// 페이지2 진입 1초 뒤 자동재생 (page1→page2 줌인이 끝나는 타이밍에 음악이 들어옴)
+function scheduleBgmAutoplay() {
+  if (bgmAutoplayTimer) clearTimeout(bgmAutoplayTimer);
+  bgmAutoplayTimer = setTimeout(() => {
+    bgmAutoplayTimer = null;
+    bgmStart();
+  }, 1000);
+}
+
+// 재생/정지 토글
+if (bgmPlayBtn) {
+  bgmPlayBtn.addEventListener('click', () => {
+    if (!bgmAudio) return;
+    if (bgmAudio.paused) bgmStart();
+    else                 bgmAudio.pause();
+  });
+}
+
+// 볼륨 슬라이더
+if (bgmVolume) {
+  bgmVolume.value = String(Math.round(bgmLastVolume * 100));
+  bgmVolume.addEventListener('input', () => {
+    const v = Math.max(0, Math.min(1, Number(bgmVolume.value) / 100));
+    if (bgmAudio) {
+      bgmAudio.volume = v;
+      if (v > 0) {
+        bgmLastVolume = v;
+        bgmAudio.muted = false;
+        if (bgmMuteBtn) bgmMuteBtn.classList.remove('muted');
+      } else {
+        // 슬라이더로 0 까지 내리면 음소거 아이콘 표시
+        if (bgmMuteBtn) bgmMuteBtn.classList.add('muted');
+      }
+    }
+  });
+}
+
+// 음소거 버튼
+if (bgmMuteBtn) {
+  bgmMuteBtn.addEventListener('click', () => {
+    if (!bgmAudio) return;
+    if (bgmAudio.muted || bgmAudio.volume === 0) {
+      // 음소거 해제 → 마지막 볼륨 복원
+      bgmAudio.muted = false;
+      bgmAudio.volume = bgmLastVolume > 0 ? bgmLastVolume : 0.6;
+      if (bgmVolume) bgmVolume.value = String(Math.round(bgmAudio.volume * 100));
+      bgmMuteBtn.classList.remove('muted');
+    } else {
+      // 음소거
+      bgmLastVolume = bgmAudio.volume;   // 현재 볼륨 기억
+      bgmAudio.muted = true;
+      bgmMuteBtn.classList.add('muted');
+    }
   });
 }
