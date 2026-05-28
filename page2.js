@@ -490,7 +490,7 @@ const bgmMuteBtn  = document.getElementById('bgmMuteBtn');
 const bgmVolume   = document.getElementById('bgmVolume');
 
 let bgmAutoplayTimer = null;
-let bgmLastVolume    = 0.5;       // 음소거 토글 시 복원할 볼륨 기억
+let bgmLastVolume    = 0.4;       // 음소거 토글 시 복원할 볼륨 기억
 
 if (bgmAudio) {
   bgmAudio.loop = false;
@@ -519,13 +519,13 @@ function bgmStop() {
   bgmAudio.currentTime = 0;
 }
 
-// 페이지2 진입 1초 뒤 자동재생 (page1→page2 줌인이 끝나는 타이밍에 음악이 들어옴)
+// 페이지2 진입 0.2초 뒤 자동재생 (page1→page2 줌인이 끝나는 타이밍에 음악이 들어옴)
 function scheduleBgmAutoplay() {
   if (bgmAutoplayTimer) clearTimeout(bgmAutoplayTimer);
   bgmAutoplayTimer = setTimeout(() => {
     bgmAutoplayTimer = null;
     bgmStart();
-  }, 1000);
+  }, 200);
 }
 
 // 재생/정지 토글
